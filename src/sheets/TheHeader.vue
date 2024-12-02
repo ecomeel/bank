@@ -5,19 +5,23 @@
     </div>
     <h1 :class="$style.header__title">{{ $route.name }}</h1>
     <div :class="$style['header__right-content']">
-      <div :class="$style.header__avatar">
-        <!-- TODO: insert avatar -->
-        <!-- <img src="" alt=""> -->
-      </div>
-      <!-- TODO: add settings -->
-       <!-- TODO: add notifs -->
-        <!-- TODO: Add search something -->
+      <ButtonImageCircle 
+        :class="$style.header__avatar"
+      />
+      <ButtonImageCircle 
+        button-name="Уведомления"
+        image-url="/images/icons/notification.svg"
+      />
+      <ButtonImageCircle 
+        button-name="Настройки"
+        image-url="/images/icons/settings.svg"
+      />
     </div>
   </header>
 </template>
   
 <script setup lang='ts'>
-
+import ButtonImageCircle from '@/components/buttons/ButtonImageCircle.vue'
 </script>
   
 <style lang="scss" module>
@@ -54,6 +58,35 @@
     border-radius: 100%;
     background-color: $gray-b1b;
     cursor: pointer;
+  }
+  &__right-content {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 25px;
+  }
+  
+  @media (min-width: $screen-m-min) {
+    &__menu {
+      display: none;
+    }
+    &__title {
+      font-size: 25px;
+    }
+    &__avatar {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  @media (min-width: $screen-xl-min) {
+    padding: 1.2vw 2.78vw;
+    &__title {
+      font-size: 1.94vw;
+    }
+    &__avatar {
+      width: 3.47vw;
+      height: 3.47vw;
+    }
   }
 }
 </style>
